@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:background="#579F">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NUOVO PRODOTTO"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/label_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome prodotto"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/edit_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci prodotto"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/label_descrizione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrizione"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/edit_descrizione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descrizione prodotto"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/label_prezzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prezzo"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/edit_prezzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Prezzo prodotto"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AGGIUNGI PRODOTTO"
+        android:background="#0F0"
+        android:id="@+id/buttonNuovo"
+        android:onClick="Aggiungi"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AGGIORNA LISTA"
+        android:background="#44F"
+        android:id="@+id/buttonAggiorna"
+        android:onClick="Aggiorna"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:id="@+id/lista"
+        android:background="#979F"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+
+</LinearLayout>
