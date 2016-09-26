@@ -67,64 +67,18 @@ public class ViewActivity extends AppCompatActivity {
 
     //pulsante per aggiungere un prodotto
     public void Aggiungi(View v){
-
-        //componiamo il JSON da inviare al WS in PHP
-        JsonToSend = new JSONObject();
-
-        try{
-            JsonToSend.put("nome",nomeEdit.getText().toString());
-            JsonToSend.put("descrizione",descrizioneEdit.getText().toString());
-            JsonToSend.put("prezzo",prezzoEdit.getText().toString());
-        }catch(Exception e){Log.e("ERRORE JSON","ERRORE CREAZIONE JSON: " + e.toString());}
-
-        new AsyncAggiungi().execute();
-
+        //al presenter inviamo le tre stringhe: nome, descrizione e prezzo.
+        //sarà il presenter ad istanziare il Model e a richiamare ModelDAO per la composizione del messaggio JSON da inviare al WS
     }
 
     //pulsante per aggiornare la lista
     public void Aggiorna(View v){
-        new AsyncAggiorna().execute();
-
+        //new AsyncAggiorna().execute();
+        //richiama semplicemente la funzione del presenter
     }
 
 
 
-    private class AsyncAggiungi extends AsyncTask<Void,Void,Void> {
-
-        ProgressDialog progressDialog = new ProgressDialog(context);
-
-        @Override
-        protected void onPreExecute(){
-            progressDialog.setCancelable(false);
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.setTitle("Contatto il Web Service");
-            progressDialog.show();
-        }
-        @Override
-        protected Void doInBackground(Void...params){
-            try{
-                HttpPost post = new HttpPost("http://alessandroargentieri.altervista.org/ws_insert_db.php");
-                HttpClient client = new DefaultHttpClient();
-                String se = (JsonToSend.toString());
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                nameValuePairs.add(new BasicNameValuePair("jsonarray", se));
-                post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                //Riceviamo la risposta JSON del WS
-                HttpResponse response  = client.execute(post);
-                String result = EntityUtils.toString(response.getEntity());
-                Log.e("RISPOSTA result: ", result);
-
-            }catch(Exception e){Log.e("ERRORE","ERRORE ASYNCAGGIUNGI: " + e.toString());}
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void result){
-            super.onPostExecute(result);
-            if(progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
-        }
-    }
 
 
 
